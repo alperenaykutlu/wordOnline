@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using WordleOnline.Application.Common.Interfaces;
 using WordleOnline.Application.Identity.Commands.ChangeUsername;
 using WordleOnline.Application.Identity.Commands.GoogleLogin;
-using WordleOnline.Domain.Identity.Repositories;
 
 namespace WordleOnline.API.Controllers;
 
@@ -14,7 +13,6 @@ public sealed class AuthController : ControllerBase
 {
     private readonly IMediator _mediator;
     private readonly IJwtTokenService _jwtService;
-    private readonly IUserRepository _userRepo;
 
     public AuthController(IMediator mediator, IJwtTokenService jwtService)
     {
