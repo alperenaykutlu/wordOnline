@@ -1,0 +1,158 @@
+name: 🎮 Wordle Online — CI/CD
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+env:
+  DOTNET_VERSION: "8.0.x"
+  NODE_VERSION: "20.x"
+
+jobs:
+  # ══════════════════════════════════════════════
+  #  JOB 1 — Backend Build & Test
+  # ══════════════════════════════════════════════
+  backend-ci:
+    name: 🔧 Backend CI
+    runs-on: ubuntu-latest
+
+    services:
+      mongodb:
+        image: mongo:7.0
+        ports: ["27017:27017"]
+        options: >-
+          --health-cmd "mongosh --eval 'db.runCommand(\"ping\").ok'"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      redis:
+        image: redis:7.2-alpine
+        ports: ["6379:6379"]
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v4
+
+      - name: 🔷 Setup .NET ${{ env.DOTNET_VERSION }}
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: 📦 Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: nuget-
+
+      - name: 🔍 Restore dependencies
+        run: dotnet restore backend/src/WordleOnline.API/WordleOnline.API.csproj
+
+      - name: 🏗️ Build
+        run: dotnet build backend/src/WordleOnline.API/WordleOnline.API.csproj
+          --no-restore -c Release
+
+      - name: 🧪 Domain Tests
+        run: dotnet test backend/tests/WordleOnline.Domain.Tests
+          --no-build -c Release
+          --logger "trx;LogFileName=domain-results.trx"
+
+      - name: 🧪 Application Tests
+        run: dotnet test backend/tests/WordleOnline.Application.Tests
+          --no-build -c Release
+          --logger "trx;LogFileName=app-results.trx"
+        env:
+          MongoDB__ConnectionString: mongodb://localhost:27017
+          MongoDB__DatabaseName: wordle_test
+          Redis__ConnectionString: localhost:6379
+
+      - name: 📊 Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: "**/*.trx"
+
+  # ══════════════════════════════════════════════
+  #  JOB 2 — Frontend Type Check
+  # ══════════════════════════════════════════════
+  frontend-ci:
+    name: 📱 Frontend CI
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: 📦 Install dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: 🔍 TypeScript type check
+        working-directory: frontend
+        run: npx tsc --noEmit
+
+      - name: 🧹 ESLint
+        working-directory: frontend
+        run: npm run lint
+
+  # ══════════════════════════════════════════════
+  #  JOB 3 — Security Scan
+  # ══════════════════════════════════════════════
+  security-scan:
+    name: 🔒 Security Scan
+    runs-on: ubuntu-latest
+    needs: [backend-ci]
+
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v4
+
+      - name: 🔍 Check for secrets in code
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: ${{ github.event.repository.default_branch }}
+          head: HEAD
+
+  # ══════════════════════════════════════════════
+  #  JOB 4 — Deploy (sadece main branch)
+  # ══════════════════════════════════════════════
+  deploy:
+    name: 🚀 Deploy to Render.com
+    runs-on: ubuntu-latest
+    needs: [backend-ci, frontend-ci, security-scan]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+      - name: 🚀 Trigger Render Deploy
+        run: |
+          curl --fail -X POST \
+            "${{ secrets.RENDER_DEPLOY_HOOK_URL }}" \
+            -H "Content-Type: application/json"
+        env:
+          RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+
+      - name: ✅ Deploy triggered
+        run: echo "Render.com deploy hook tetiklendi. Dashboard'dan takip edin."
+
+      - name: 📣 Notify on failure
+        if: failure()
+        run: |
+          echo "Deploy başarısız! Loglara bakın."
+          # İleride Slack/Discord webhook eklenebilir

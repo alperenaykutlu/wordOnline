@@ -1,0 +1,12 @@
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Domain\obj\Debug\net8.0\WordleOnline.Domain.csproj.AssemblyReference.cache
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Domain\obj\Debug\net8.0\WordleOnline.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Domain\obj\Debug\net8.0\WordleOnline.Domain.AssemblyInfoInputs.cache
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Domain\obj\Debug\net8.0\WordleOnline.Domain.AssemblyInfo.cs
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Domain\obj\Debug\net8.0\WordleOnline.Domain.csproj.CoreCompileInputs.cache
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Domain\bin\Debug\net8.0\WordleOnline.Domain.deps.json
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Domain\bin\Debug\net8.0\WordleOnline.Domain.dll
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Domain\bin\Debug\net8.0\WordleOnline.Domain.pdb
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Domain\obj\Debug\net8.0\WordleOnline.Domain.dll
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Domain\obj\Debug\net8.0\refint\WordleOnline.Domain.dll
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Domain\obj\Debug\net8.0\WordleOnline.Domain.pdb
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Domain\obj\Debug\net8.0\ref\WordleOnline.Domain.dll

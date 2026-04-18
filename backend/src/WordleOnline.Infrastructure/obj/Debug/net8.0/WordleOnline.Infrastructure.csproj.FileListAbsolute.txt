@@ -1,0 +1,17 @@
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Infrastructure\obj\Debug\net8.0\WordleOnline.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Infrastructure\obj\Debug\net8.0\WordleOnline.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Infrastructure\obj\Debug\net8.0\WordleOnline.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Infrastructure\obj\Debug\net8.0\WordleOnline.Infrastructure.AssemblyInfo.cs
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Infrastructure\obj\Debug\net8.0\WordleOnline.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Infrastructure\bin\Debug\net8.0\WordleOnline.Infrastructure.deps.json
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Infrastructure\bin\Debug\net8.0\WordleOnline.Infrastructure.dll
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Infrastructure\bin\Debug\net8.0\WordleOnline.Infrastructure.pdb
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Infrastructure\bin\Debug\net8.0\WordleOnline.Application.dll
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Infrastructure\bin\Debug\net8.0\WordleOnline.Domain.dll
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Infrastructure\bin\Debug\net8.0\WordleOnline.Domain.pdb
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Infrastructure\bin\Debug\net8.0\WordleOnline.Application.pdb
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Infrastructure\obj\Debug\net8.0\WordleOn.8CEF1775.Up2Date
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Infrastructure\obj\Debug\net8.0\WordleOnline.Infrastructure.dll
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Infrastructure\obj\Debug\net8.0\refint\WordleOnline.Infrastructure.dll
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Infrastructure\obj\Debug\net8.0\WordleOnline.Infrastructure.pdb
+C:\Users\alper\source\repos\WordOnline\backend\src\WordleOnline.Infrastructure\obj\Debug\net8.0\ref\WordleOnline.Infrastructure.dll

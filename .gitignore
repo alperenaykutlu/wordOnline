@@ -1,0 +1,53 @@
+# ─── Secrets — KESİNLİKLE commit etme ───────────────────
+.env
+.env.local
+.env.production
+.env.staging
+*.pem
+*.key
+*.p12
+secrets/
+
+# ─── Backend ─────────────────────────────────────────────
+backend/bin/
+backend/obj/
+backend/**/*.user
+backend/**/*.suo
+backend/.vs/
+backend/TestResults/
+backend/**/*.trx
+
+# ─── Frontend ────────────────────────────────────────────
+frontend/node_modules/
+frontend/.expo/
+frontend/dist/
+frontend/build/
+frontend/android/build/
+frontend/android/app/build/
+frontend/android/.gradle/
+frontend/android/.idea/
+frontend/android/local.properties
+frontend/android/captures/
+frontend/android/app/release/
+frontend/android/app/google-services.json
+frontend/ios/build/
+frontend/ios/Pods/
+frontend/.gradle/
+frontend/*.log
+frontend/coverage/
+
+# ─── Root-level ──────────────────────────────────────────
+/.vs/
+.rn-init-temp/
+.claude/
+
+# ─── Docker ──────────────────────────────────────────────
+docker-compose.override.yml
+
+# ─── IDE ─────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+Thumbs.db
