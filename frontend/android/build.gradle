@@ -19,3 +19,14 @@ buildscript {
 }
 
 apply plugin: "com.facebook.react.rootproject"
+
+// androidx.core 1.16+ compileSdk 35 istiyor — AGP 8.1.1 + compileSdk 34 ile
+// uyumlu son sürüme sabitle. RN 0.73 + compileSdk 35'e geçince kaldırılabilir.
+allprojects {
+    configurations.all {
+        resolutionStrategy {
+            force 'androidx.core:core:1.13.1'
+            force 'androidx.core:core-ktx:1.13.1'
+        }
+    }
+}
