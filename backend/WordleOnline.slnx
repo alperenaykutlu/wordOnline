@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/WordleOnline.API/WordleOnline.API.csproj" />
+    <Project Path="src/WordleOnline.Application/WordleOnline.Application.csproj" />
+    <Project Path="src/WordleOnline.Domain/WordleOnline.Domain.csproj" />
+    <Project Path="src/WordleOnline.Infrastructure/WordleOnline.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/WordleOnline.Application.Tests/WordleOnline.Application.Tests.csproj" />
+    <Project Path="tests/WordleOnline.Domain.Tests/WordleOnline.Domain.Tests.csproj" />
+  </Folder>
+</Solution>
